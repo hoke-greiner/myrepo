@@ -1,0 +1,76 @@
+FORMAT: 1A
+HOST: http://jandekapi.apiary.io
+
+# Jandek API
+An **updateable discography** of all Jandek releases.
+
+# Group Discography
+A resource for all Jandek releases on the Corwood label since 1978.
+
+## Jandek Discography [/corwood]
+### List all Corwood releases [GET]
+
++ Request
+
+    + Headers
+    
+            Accept: application/json
+        
++ Response 200 (application/json)
+
+    + Body
+    
+            { "page":1,"results": [
+            {
+                "id" : 1,
+                "album title" : "Ready for the House"
+            },
+            {
+                "id" : 2,
+                "album title" : "Six and Six"
+            },
+            ] }
+
+### Create a Corwood Release [POST]
+
++ Request (application/json)
+
+        { "album title" : "Ready for the House",
+        "release_date" : 1978,
+        "description" : "Released under the name The Units, Jandek's first album establishes his singular style of Avant Blues."
+        }
+
++ Response 201 (application/json)
+
+        {   "id": 1
+        "album title" : "Ready for the House",
+        "release_date" : 1978,
+        "description" : "Released under the name The Units, Jandek's first album establishes his singular style of Avant Blues",
+        "updated_at" : "2014-07-01T13:26:35Z"
+        }
+
+## Corwood Release [/corwood/{id}]
+A single Corwood release with details and description.
+
++ Parameters
+    + id (required, number) ... Numeric 'id' of the Corwood release.
+
+### Retrieve a Corwood release [GET]
++ Response 200 (application/json)
+
+    + Header
+    
+            Accept: application/json
+            
+    + Body
+    
+            { "id" : 1,
+                "album title" : "Ready for the House",
+                "release_date" : 1978,
+                "description" : "Released under the name The Units, Jandek's first album establishes his singular style of Avant Blues",
+            }
+
+### Remove a Corwood release [DELETE]
++ Response 204
+
+    
